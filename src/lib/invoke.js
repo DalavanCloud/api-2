@@ -14,8 +14,8 @@ module.exports = (key, service, action, data, opts = {}) => {
   };
 
   if (outputs !== undefined) {
-    const parsedOutput = querystring.stringify(outputs);
-    headers['X-Build-Output'] = parsedOutput;
+    const parsedOutputs = JSON.stringify(outputs);
+    headers['X-Build-Output'] = parsedOutputs;
   }
 
   return request.post(`${BUILD_URL}/run/${prefixName(service)}/${action}`, {
